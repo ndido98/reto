@@ -1,0 +1,33 @@
+baseUrl = "https://ndido98.github.io/reto"
+theme = "reveal-hugo"
+languageCode = "it-it"
+disableKinds = ["sitemap", "RSS"]
+
+[markup.goldmark.renderer]
+unsafe = true
+
+[outputFormats.Reveal]
+baseName = "index"
+mediaType = "text/html"
+isHTML = true
+
+[params.reveal_hugo]
+theme = "white"
+width = "100%"
+height = "100%"
+pdfSeparateFragments = false
+highlight_theme = "github"
+transition = "slide"
+transition_speed = "fast"
+custom_theme = "custom-theme.scss"
+custom_theme_compile = true
+
+[params.reveal_hugo.custom_theme_options]
+targetPath = "css/custom-theme.css"
+enableSourceMap = true
+
+[markup.highlight]
+#style = "monokailight"
+style = "monokai"
+#style = "pygments"
+codeFences = false
