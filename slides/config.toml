@@ -27,7 +27,7 @@ targetPath = "css/custom-theme.css"
 enableSourceMap = true
 
 [markup.highlight]
-#style = "monokailight"
-style = "monokai"
+style = "monokailight"
+#style = "monokai"
 #style = "pygments"
-codeFences = false
+codeFences = true

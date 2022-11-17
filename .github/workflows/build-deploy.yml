@@ -30,5 +30,5 @@ jobs:
         if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/master' }}
         uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:
-          BRANCH: gh-pages
-          FOLDER: slides/public
+          branch: gh-pages
+          folder: slides/public
