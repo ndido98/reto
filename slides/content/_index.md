@@ -24,12 +24,13 @@ abbiamo realizzato l'ontologia ReTO con l'obiettivo di:
 # Alcuni esempi
 
 L'**ambito medico** è un campo in cui poter ragionare automaticamente \
-sulle *relazioni* fra eventi temporali può essere molto utile
+sulle _relazioni_ fra eventi temporali può essere molto utile
 
 Alcuni esempi che potrebbero beneficiare di un'ontologia per il tempo:
-* Individuazione più efficace di *reazioni avverse*
-* Predizione del *rischio di insorgenza* di determinate malattie
-* Studio del *decorso* di una malattia
+
+- Individuazione più efficace di _reazioni avverse_
+- Predizione del _rischio di insorgenza_ di determinate malattie
+- Studio del _decorso_ di una malattia
 
 ---
 
@@ -68,6 +69,7 @@ un'efficace inferenza temporale
 ---
 
 # Eventi
+
 L'ontologia rimane volutamente _generica sulla tipologia di eventi trattati:_ \
 il fulcro centrale è la gestione di concetti temporali
 
@@ -85,20 +87,21 @@ realizzare a seconda del bisogno. Un evento potrebbe essere:
 
 Il concetto chiave è quello di **intervallo temporale** (`TimeInterval`)
 
-Ogni intervallo ha un *istante d'inizio* e/o un *istante di fine*: \
-se manca uno dei due estremi, l'intervallo è *aperto*
+Ogni intervallo ha un _istante d'inizio_ e/o un _istante di fine_: \
+se manca uno dei due estremi, l'intervallo è _aperto_
 
 Si divide in:
-* Intervallo **assoluto** (`AbsoluteInterval`)
-* Intervallo **relativo** (`RelativeInterval`)
-* Intervallo **approssimato** (`FuzzyInterval`)
+
+- Intervallo **assoluto** (`AbsoluteInterval`)
+- Intervallo **relativo** (`RelativeInterval`)
+- Intervallo **approssimato** (`FuzzyInterval`)
 
 ---
 
 ## Intervalli assoluti
 
 Un **intervallo assoluto** (`AbsoluteInterval`) è un intervallo \
-i cui estremi sono *istanti assoluti*, quindi *ben fissati sulla linea temporale*
+i cui estremi sono _istanti assoluti_, quindi _ben fissati sulla linea temporale_
 
 ### Esempi
 
@@ -112,7 +115,7 @@ i cui estremi sono *istanti assoluti*, quindi *ben fissati sulla linea temporale
 ## Intervalli relativi
 
 Un **intervallo relativo** (`RelativeInterval`) è un intervallo \
-in cui almeno uno dei due estremi è un *istante relativo* a uno assoluto
+in cui almeno uno dei due estremi è un _istante relativo_ a uno assoluto
 
 ### Esempi
 
@@ -124,8 +127,8 @@ in cui almeno uno dei due estremi è un *istante relativo* a uno assoluto
 ## Intervalli approssimati
 
 Un **intervallo approssimato** (`FuzzyInterval`) è un intervallo \
-in cui almeno uno dei due estremi è un *istante approssimato*, \
-cioè contenuto in un *intervallo di incertezza*
+in cui almeno uno dei due estremi è un _istante approssimato_, \
+cioè contenuto in un _intervallo di incertezza_
 
 ### Esempi
 
@@ -139,15 +142,20 @@ cioè contenuto in un *intervallo di incertezza*
 # Istanti temporali
 
 Un **istante temporale** (`TimeInstant`) rappresenta un'entità temporale \
-che denota un preciso momento nel tempo *di durata nulla*
+che denota un preciso momento nel tempo _di durata nulla_
 
-Un istante non è altro che un *intervallo* i cui istanti di inizio e fine coincidono: \
-questa equivalenza *semplifica notevolmente* le regole per effettuare il reasoning
+Un istante non è altro che un _intervallo_ i cui istanti di inizio e fine coincidono: \
+questa equivalenza _semplifica notevolmente_ le regole per effettuare il reasoning
 
 Analogamente agli intervalli, si divide in:
-* Istante **assoluto** (`AbsoluteInstant`)
-* Istante **relativo** (`RelativeInstant`)
-* Istante **approssimato** (`FuzzyInstant`)
+
+- Istante **assoluto** (`AbsoluteInstant`)
+- Istante **relativo** (`RelativeInstant`)
+- Istante **approssimato** (`FuzzyInstant`)
+
+---
+
+{{< figure src="classi1.svg" >}}
 
 ---
 
@@ -166,10 +174,10 @@ ben fissato sulla linea temporale
 ## Istanti relativi
 
 Un **istante relativo** (`RelativeInstant`) è un istante \
-definito in termini di distanza da un istante assoluto (detto *àncora*)
+definito in termini di distanza da un istante assoluto (detto _àncora_)
 
 La distanza di un istante relativo dalla sua àncora viene indicata tramite un `TimeDelta`, \
-che contiene una *dimensione numerica* e la sua *granularità*
+che contiene una _dimensione numerica_ e la sua _granularità_
 
 ### Esempi
 
@@ -183,7 +191,7 @@ che contiene una *dimensione numerica* e la sua *granularità*
 ## Istanti approssimati
 
 Un **istante approssimato** (`FuzzyInstant`) è un istante \
-contenuto in un *intervallo di incertezza*
+contenuto in un _intervallo di incertezza_
 
 ### Esempi
 
@@ -192,23 +200,27 @@ contenuto in un *intervallo di incertezza*
 
 ---
 
+{{< figure src="instants.svg" >}}
+
+---
+
 # Relazioni temporali
 
-Le **relazioni temporali** possono essere stabilite fra due *entità temporali qualsiasi,* \
+Le **relazioni temporali** possono essere stabilite fra due _entità temporali qualsiasi,_ \
 a prescindere dal fatto che siano istanti o intervalli
 
 Si dividono in:
-* Relazioni temporali *elementari*
-* Relazioni temporali *di Allen*
+
+- Relazioni temporali _elementari_
+- Relazioni temporali _di Allen_
 
 ---
 
 ## Relazioni temporali elementari
 
-Le relazioni temporali di base permettono di stabilire \
+Le relazioni temporali elementari permettono di stabilire \
 _legami fra intervalli_ anche nel caso in cui questi siano aperti \
 mettendo in relazione i tempi dei loro estremi
-
 
 ```mermaid
 flowchart LR
@@ -286,14 +298,14 @@ _corrispondente intervallo assoluto_
 
 ## Conversione da istante assoluto a intervallo
 
-Un istante assoluto è un intervallo assoluto che ha *l'istante stesso* \
+Un istante assoluto è un intervallo assoluto che ha _l'istante stesso_ \
 come inizio e come fine
 
 ```prolog
    :AbsoluteInstant(?i)
--> :hasEnd(?i, ?i)
- ^ :AbsoluteInterval(?i)
+-> :AbsoluteInterval(?i)
  ^ :hasBeginning(?i, ?i)
+ ^ :hasEnd(?i, ?i)
 ```
 
 ---
@@ -301,7 +313,7 @@ come inizio e come fine
 ## Relazioni temporali elementari
 
 $\forall T_1, T_2 . \[hasBeginning(T_1, B_1) \land hasEnd(T_2, E_2) \land B_1 < E_2 \]$ \
-$\Rightarrow startBeforeEnd(T_1, T_2)$ 
+$\Rightarrow startBeforeEnd(T_1, T_2)$
 
 ```prolog
    :hasBeginning(?a, ?aAnchor)
@@ -325,11 +337,11 @@ $$
 \end{align}
 $$
 
-L'implicazione $\Rightarrow$ può essere realizzata direttamente in *OWL* \
+L'implicazione $\Rightarrow$ può essere realizzata direttamente in _OWL_ \
 grazie all'uso di `subPropertyOf`
 
 Tuttavia, per implementare l'implicazione $\Leftarrow$ è necessario \
-ricorrere a regole *SWRL*
+ricorrere a regole _SWRL_
 
 ```prolog
    :startBeforeStart(?a, ?b)
@@ -367,7 +379,7 @@ Per poter aggiungere l'individuo che contiene la durata dell'intervallo \
 ## Conversioni di durate temporali
 
 Le durate sono calcolate automaticamente in secondi, ma potrebbe essere \
-utile poter interrogare su _granularità diverse_ delle durate degli intervalli \
+utile poter interrogare su _granularità diverse_ delle durate degli intervalli
 
 Per questo sono state implementate diverse regole che realizzano in automatico \
 le conversioni a diverse granularità (minuti, giorni, anni, ...)
@@ -443,7 +455,7 @@ WHERE {
 
 L'Agenzia Italiana del Farmaco sta seguendo gli studi di Fase 3 \
 per dare l'approvazione del nuovo vaccino bivalente BA.4/BA.5 contro il virus SARS-Cov-2, \
-e vuole analizzare *tutte le segnalazioni* di *episodi avversi* avvenuti *in seguito alla vaccinazione*
+e vuole analizzare _tutte le segnalazioni_ di _episodi avversi_ avvenuti _in seguito alla vaccinazione_
 
 ```sparql
 SELECT ?patient ?accident ?vaccTime ?accidentTime
